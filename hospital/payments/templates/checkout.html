@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+    <h2>Pay for Appointment with {{ appointment.doctor.name }}</h2>
+    <p>Amount: ₹{{ appointment.fee }}</p>
+
+    <!-- Razorpay payment form -->
+    <form action="{% url 'payments:payment_success' %}" method="POST">
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key }}"
+            data-amount="{{ appointment.fee|floatformat:0 }}00"
+            data-currency="INR"
+            data-order_id="{{ razorpay_order.id }}"
+            data-buttontext="Pay Now"
+            data-name="Hospital Booking"
+            data-description="Doctor Appointment Payment"
+            data-prefill.name="{{ request.user.username }}"
+            data-theme.color="#F37254">
+        </script>
+    </form>
+</body>
+</html>

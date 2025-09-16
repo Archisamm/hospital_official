@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Pay for Appointment</h2>
+    <p>Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
+    <p>Amount: ₹{{ appointment.fee }}</p>
+
+    <form id="razorpay-form">
+      <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="{{ razorpay_key_id }}"
+        data-amount="{{ amount_in_paise }}"  {# amount in paise, calculated in view #}
+        data-currency="INR"
+        data-order_id="{{ razorpay_order.id }}"
+        data-buttontext="Pay Now"
+        data-name="Hospital Appointment"
+        data-description="Payment for appointment"
+        data-prefill.name="{{ appointment.user.username }}"
+        data-prefill.email="{{ appointment.user.email }}"
+        data-theme.color="#F37254">
+      </script>
+      <input type="hidden" name="hidden">
+    </form>
+</div>
+{% endblock %}

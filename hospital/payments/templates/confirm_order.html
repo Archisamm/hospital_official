@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Order</title>
+</head>
+<body>
+    <h2>Confirm Your Appointment</h2>
+    <p>Doctor: {{ appointment.doctor.name }}</p>
+    <p>Amount: ₹{{ appointment.fee }}</p>
+    <a href="{% url 'payments:create_razorpay_order' appointment.id %}">Proceed to Payment</a>
+</body>
+</html>

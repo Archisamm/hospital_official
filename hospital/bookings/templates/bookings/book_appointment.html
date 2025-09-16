@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Book Appointment with Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h2>
+    <hr>
+
+    {% if patients %}
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="patient_id" class="form-label">Select Patient:</label>
+                <select name="patient_id" id="patient_id" class="form-control" required>
+                    {% for patient in patients %}
+                        <option value="{{ patient.id }}">
+                            {{ patient.name }} ({{ patient.get_relation_display }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="app_date" class="form-label">Select Date & Time:</label>
+                <input type="datetime-local" name="app_date" id="app_date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Book Appointment</button>
+        </form>
+    {% else %}
+        <p class="mt-3">
+            No patients found. Please 
+            <a href="{% url 'authentication:add_patient' %}">add a patient</a> first.
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

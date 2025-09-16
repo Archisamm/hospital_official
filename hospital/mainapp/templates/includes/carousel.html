@@ -1,0 +1,61 @@
+{% load static %}
+
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-4" data-bs-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    <!-- Slide 1: Dark image, light text -->
+    <div class="carousel-item active carousel-dark">
+      <img src="{% static 'images/doc8.jpg' %}" class="d-block w-100 carousel-img" alt="Laboratories">
+      <div class="carousel-caption d-none d-md-block carousel-caption-custom">
+        <h5>Advanced Laboratories</h5>
+        <p>Expert lab technicians providing precise diagnostics with modern equipment.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2: Light image, dark text -->
+    <div class="carousel-item carousel-light">
+      <img src="{% static 'images/doc6.jpg' %}" class="d-block w-100 carousel-img" alt="Environment">
+      <div class="carousel-caption d-none d-md-block carousel-caption-custom">
+        <h5>Comfortable Environment</h5>
+        <p>Patients treated with care in a safe and welcoming environment.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Dark image, light text -->
+    <div class="carousel-item carousel-dark">
+      <img src="{% static 'images/doc3.jpg' %}" class="d-block w-100 carousel-img" alt="Child Hospital">
+      <div class="carousel-caption d-none d-md-block carousel-caption-custom">
+        <h5>Child-Friendly Care</h5>
+        <p>Dedicated children’s hospital section ensuring specialized pediatric care.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Optional JS initialization -->
+<script>
+  var myCarousel = document.querySelector('#carouselExampleCaptions')
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 4000,  // 4 seconds per slide
+    ride: 'carousel',
+    pause: false,
+    wrap: true
+  })
+</script>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}My Appointments{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>My Appointments</h2>
+    <hr>
+
+    {% if appointments %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Doctor</th>
+                    <th>Patient</th>
+                    <th>Appointment Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</td>
+                    <td>{{ appointment.patient.name }}</td>
+                    <td>{{ appointment.app_date|date:"Y-m-d H:i" }}</td>
+                    <td>{{ appointment.get_status_display }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No appointments found.</p>
+    {% endif %}
+</div>
+{% endblock %}

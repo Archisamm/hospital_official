@@ -1,0 +1,29 @@
+<!-- departments/templates/manage_appointment.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Appointment</title>
+</head>
+<body>
+    <h2>Manage Appointment</h2>
+
+    <p><strong>Patient:</strong> {{ appointment.patient.name }}</p>
+    <p><strong>Doctor:</strong> Dr. {{ appointment.doctor.name }}</p>
+    <p><strong>Date & Time:</strong> {{ appointment.app_date }}</p>
+    <p><strong>Current Status:</strong> {{ appointment.get_status_display }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="status">Update Status:</label>
+        <select name="status" id="status" required>
+            {% for key, value in appointment.STATUS_CHOICES %}
+                <option value="{{ key }}" {% if key == appointment.status %}selected{% endif %}>
+                    {{ value }}
+                </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>

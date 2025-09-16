@@ -1,0 +1,73 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg" style="background: linear-gradient(90deg, #6a11cb, #2575fc);">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-bold" href="{% url 'mainapp:homepage' %}">Rainbow Hospital</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="color:white;"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{% url 'mainapp:homepage' %}">Home</a>
+        </li>
+
+        {% if user.is_authenticated %}
+          {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'mainapp:add_doctor' %}">Add Doctor</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'mainapp:view_doctors' %}">View Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'authentication:add_patient' %}">Add Patient</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'bookings:my_appointments' %}">My Appointments</a>
+            </li>
+          {% endif %}
+
+          <!-- Username + Logout icon -->
+          <li class="nav-item dropdown ms-3">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle"></i> {{ user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li>
+                <form method="post" action="{% url 'mainapp:logout' %}" class="px-3 py-1">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger btn-sm w-100">
+                    Logout <i class="fas fa-power-off"></i>
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </li>
+
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'authentication:signup' %}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'authentication:signin' %}">Sign In</a>
+          </li>
+        {% endif %}
+
+      </ul>
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- FontAwesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

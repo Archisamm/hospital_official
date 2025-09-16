@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+</head>
+<body>
+    <h2>✅ Payment Successful</h2>
+    <p>Appointment with {{ payment.appointment.doctor.name }} confirmed.</p>
+    <p>Amount Paid: ₹{{ payment.amount }}</p>
+    <p>Status: {{ payment.status }}</p>
+
+    <a href="/">Go back to Home</a>
+</body>
+</html>

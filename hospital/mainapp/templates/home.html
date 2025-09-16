@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Rainbow Hospital{% endblock %}
+
+{% block content %}
+{% include 'includes/carousel.html' %}
+
+<div class="my-4">
+    <h2>Welcome to Rainbow Hospital</h2>
+    <p>We provide the best medical services with experienced doctors and state-of-the-art facilities.</p>
+</div>
+
+{% if user.is_authenticated %}
+<div class="row mt-4">
+    {% if not user.is_staff %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Patient</h5>
+                    <p class="card-text">Add yourself or your family members as patients.</p>
+                    <a href="{% url 'authentication:add_patient' %}" class="btn btn-primary">Add Patient</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Book Appointment</h5>
+                    <p class="card-text">Book appointments with available doctors.</p>
+                    <a href="{% url 'mainapp:view_doctors' %}" class="btn btn-primary">View Doctors</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">My Appointments</h5>
+                    <p class="card-text">Check all your upcoming and past appointments.</p>
+                    <a href="{% url 'bookings:my_appointments' %}" class="btn btn-primary">View Appointments</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Doctor</h5>
+                    <p class="card-text">Manage hospital doctors.</p>
+                    <a href="{% url 'mainapp:add_doctor' %}" class="btn btn-primary">Add Doctor</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% else %}
+<p>Please <a href="{% url 'authentication:signin' %}">sign in</a> or <a href="{% url 'authentication:signup' %}">sign up</a> to continue.</p>
+{% endif %}
+{% endblock %}

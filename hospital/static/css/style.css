@@ -1,0 +1,137 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* =========================
+   General Body & Fonts
+========================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background-color: #acafb3; /* soft light background */
+    color: #333;
+}
+
+/* =========================
+   Navbar
+========================= */
+.navbar-custom {
+    background: linear-gradient(90deg, #6a11cb, #2575fc); /* purple to blue gradient */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #ffdd59; /* subtle highlight on hover */
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   Carousel
+========================= */
+/* Carousel images: full width, uniform height, no important part hidden */
+/* Carousel image */
+.carousel-img {
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Caption default style */
+.carousel-caption-custom {
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Dark image -> light text */
+.carousel-dark .carousel-caption-custom h5,
+.carousel-dark .carousel-caption-custom p {
+    color: #f4f7f9; /* light text */
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+/* Light image -> dark text */
+.carousel-light .carousel-caption-custom h5,
+.carousel-light .carousel-caption-custom p {
+    color: #2c3e50; /* dark text */
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+}
+
+/* Rounded controls for better look */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 45px;
+    height: 45px;
+}
+/* =========================
+   Buttons
+========================= */
+.btn-outline-success {
+    border-color: #2575fc;
+    color: #2575fc;
+    transition: all 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: #2575fc;
+    color: #fff;
+}
+
+.btn-outline-warning {
+    border-color: #ffdd59;
+    color: #ffdd59;
+    transition: all 0.3s;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffdd59;
+    color: #333;
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-weight: 500;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* =========================
+   Misc
+========================= */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Optional: Add slight shadow to navbar */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

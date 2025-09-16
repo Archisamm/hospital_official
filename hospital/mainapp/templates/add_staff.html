@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Staff{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Add Staff Member</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+
+    <h2 class="mt-4">Staff Members</h2>
+    <ul>
+        {% for member in staff %}
+            <li>{{ member.first_name }} {{ member.last_name }} - {{ member.get_role_display }}</li>
+        {% empty %}
+            <li>No staff members yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

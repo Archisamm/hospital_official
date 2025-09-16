@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <ul>
+        {% for app in appointments %}
+        <li>{{app.doctor.name}} -booked for your {{app.patient.relation}}- {{app.patient.name}}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

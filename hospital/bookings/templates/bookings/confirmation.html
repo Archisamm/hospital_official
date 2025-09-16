@@ -1,0 +1,41 @@
+<!-- bookings/templates/bookings/confirmation.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+        .details {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        <h2 class="success">Appointment Booked Successfully!</h2>
+        <div class="details">
+            <p><strong>Patient:</strong> {{ appointment.patient.name }}</p>
+            <p><strong>Doctor ID:</strong> {{ appointment.doctor_id }}</p>
+            <p><strong>Fee:</strong> ₹{{ appointment.fee }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>

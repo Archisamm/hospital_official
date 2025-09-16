@@ -1,0 +1,207 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-color: #f9fafb;
+    color: #333;
+}
+
+/* ======================
+   Header & Navbar
+====================== */
+header {
+    height: 50px;
+}
+
+header nav {
+    height: 100%;
+}
+
+header nav .container-fluid {
+    height: 100%;
+}
+
+header nav .navbar-logo {
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+header nav .navbar-logo img {
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+/* ======================
+   Carousel
+====================== */
+.carousel {
+    height: 400px;
+}
+
+.carousel .carousel-inner {
+    height: 100%;
+}
+
+.carousel .carousel-inner .carousel-item {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel .carousel-inner .carousel-item img {
+    margin-top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ======================
+   Card Styles
+====================== */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-content h2 {
+    margin: 10px 0 5px;
+    font-size: 1.5em;
+}
+
+.card-content p {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.view-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #0056b3;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+/* ======================
+   Appointment Styles
+====================== */
+.app_det {
+    background: grey;
+    text-decoration: solid;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: cursive;
+}
+
+/* Table */
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+    padding: 10px 0;
+    vertical-align: top;
+}
+
+td {
+    padding: 10px 0;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Buttons */
+button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* ======================
+   Footer
+====================== */
+.footer {
+    width: 100%;
+    background-color: #a4a8ac;
+    padding: 20px;
+    text-align: center;
+}
+
+.about, h2 {
+    background-color: #ccc3c3;
+    padding: 10px;
+}

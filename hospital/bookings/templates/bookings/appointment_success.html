@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Appointment Booked{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2>Appointment Successfully Booked!</h2>
+    <p class="mt-3">Thank you for booking your appointment. Your request has been received and is pending confirmation.</p>
+
+    <a href="{% url 'bookings:my_appointments' %}" class="btn btn-primary mt-3">
+        View My Appointments
+    </a>
+</div>
+{% endblock %}

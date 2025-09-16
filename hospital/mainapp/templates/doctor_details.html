@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        {% if doctor.image %}
+            <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}">
+        {% else %}
+            <img src="{% static 'images/default_doctor.jpg' %}" alt="Doctor">
+        {% endif %}
+        <div class="card-body">
+            <h2>{{ doctor.name }}</h2>
+            <p>{{ doctor.category }}</p>
+            <a href="{% url 'doc_edit' doctor.pk %}" class="btn btn-info">Edit Doctor</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

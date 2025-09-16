@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Failed</title>
+</head>
+<body>
+    <h2>❌ Payment Failed</h2>
+    {% if payment %}
+        <p>Appointment with {{ payment.appointment.doctor.name }} could not be confirmed.</p>
+        <p>Amount: ₹{{ payment.amount }}</p>
+        <p>Status: {{ payment.status }}</p>
+    {% else %}
+        <p>No payment attempt found.</p>
+    {% endif %}
+
+    <a href="/">Try Again</a>
+</body>
+</html>
