@@ -62,3 +62,5 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f"Dr. {self.first_name} {self.last_name} - {self.department}"
+# mainapp/models.py
+department = models.ForeignKey('departments.Department', null=True, blank=True, on_delete=models.SET_NULL)

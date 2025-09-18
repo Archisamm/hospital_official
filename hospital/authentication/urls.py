@@ -1,14 +1,18 @@
 from django.urls import path
 from . import views
-from .views import UserRegister, UserLogin
+from .views import UserLogin, add_patient
 
-app_name = 'authentication'
+app_name = "authentication"
 
 urlpatterns = [
-    # User registration & login
-    path('register/', UserRegister.as_view(), name='signup'),
-    path('signin/', UserLogin.as_view(), name='signin'),
+    # Registration & OTP verification
+    path("signup/", views.register_view, name="signup"), 
+    path("register/", views.register_view, name="register"),
+    path("verify-otp/", views.verify_otp_view, name="verify_otp"),
 
-    # Patients
-    path('patients/', views.add_patient, name='add_patient'),
+    # Login
+    path("signin/", UserLogin.as_view(), name="signin"),
+
+    # Patient
+    path("add-patient/", add_patient, name="add_patient"),
 ]

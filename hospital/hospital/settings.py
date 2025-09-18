@@ -10,15 +10,14 @@ import os
 # -------------------- Base Paths -------------------- #
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # -------------------- Security -------------------- #
 SECRET_KEY = "django-insecure-3yitmopm0^^g5b_@o4q*vnf46ct0xfsyv#51xyyammig=9b$aa"
 DEBUG = True
 ALLOWED_HOSTS = []
 
-
 # -------------------- Applications -------------------- #
 INSTALLED_APPS = [
+    # Django default apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -31,9 +30,8 @@ INSTALLED_APPS = [
     "payments",
     "bookings",
     "authentication",
-    "departments"
+    "departments",
 ]
-
 
 # -------------------- Middleware -------------------- #
 MIDDLEWARE = [
@@ -46,11 +44,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 # -------------------- URL / WSGI -------------------- #
 ROOT_URLCONF = "hospital.urls"
 WSGI_APPLICATION = "hospital.wsgi.application"
-
 
 # -------------------- Templates -------------------- #
 TEMPLATES = [
@@ -73,7 +69,6 @@ TEMPLATES = [
     },
 ]
 
-
 # -------------------- Database -------------------- #
 DATABASES = {
     "default": {
@@ -81,7 +76,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # -------------------- Password Validators -------------------- #
 AUTH_PASSWORD_VALIDATORS = [
@@ -91,13 +85,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # -------------------- Internationalization -------------------- #
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Asia/Kolkata"
 USE_I18N = True
 USE_TZ = True
-
 
 # -------------------- Static & Media -------------------- #
 STATIC_URL = "/static/"
@@ -107,22 +99,31 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-
 # -------------------- Authentication -------------------- #
 LOGIN_URL = "signin"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-
-# -------------------- Razorpay -------------------- #
+# -------------------- Razorpay Configuration -------------------- #
 RAZORPAY_KEY_ID = "rzp_test_ZCJQ1cH7keRXyX"
 RAZORPAY_KEY_SECRET = "jBpxOHYvUbiSJ8016rVjaEC0"
-
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "https://yourfrontend.com",
 ]
 
+# -------------------- Email Configuration (for notifications) -------------------- #
+# For development/testing: prints emails to console
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# For production: uncomment and configure SMTP
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "archithkumarkodipalli07@gmail.com"
+EMAIL_HOST_PASSWORD = "cpmc jnhx lpuj pnac"
+DEFAULT_FROM_EMAIL = "Hospital archithkumarkodipalli07@gmail.com"
 
 # -------------------- Default Primary Key -------------------- #
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

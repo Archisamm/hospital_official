@@ -1,23 +1,25 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-DEPARTMENT_TYPE = [
-    ("clinical", "Clinical"),
-    ("administrative", "Administrative"),
-]
 
 class Department(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    type = models.CharField(max_length=20, choices=DEPARTMENT_TYPE)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name} ({self.type})"
+        return self.name
 
 
 class StaffProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    ROLE_CHOICES = [
+        ('doctor', 'Doctor'),
+        ('receptionist', 'Receptionist'),
+        ('nurse', 'Nurse'),
+        ('admin', 'Admin')
+    ]
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    email = models.EmailField(unique=True)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
-    role = models.CharField(max_length=100, help_text="e.g. Receptionist, Doctor, Nurse")
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
     def __str__(self):
-        return f"{self.user.username} - {self.role} ({self.department})"
+        return f"{self.first_name} {self.last_name} - {self.role} ({self.department.name if self.department else 'No Dept'})"

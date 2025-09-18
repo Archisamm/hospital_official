@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Staff Members</h2>
+<a href="{% url 'departments:add_staff' %}" class="btn btn-primary mb-3">Add Staff</a>
+<ul>
+    {% for staff in staff_members %}
+        <li>{{ staff.first_name }} {{ staff.last_name }} - {{ staff.role }} ({{ staff.department.name if staff.department }})</li>
+    {% empty %}
+        <li>No staff yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

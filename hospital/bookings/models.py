@@ -2,10 +2,9 @@
 from django.db import models
 from authentication.models import Patient
 from django.core.exceptions import ValidationError
-from django.utils import timezone
 from mainapp.models import Doctor
 from django.contrib.auth.models import User
-from departments.models import StaffProfile  # Added for handled_by
+
 
 class Appointment(models.Model):
     STATUS_CHOICES = [
@@ -15,7 +14,7 @@ class Appointment(models.Model):
         ('cancelled', 'Cancelled'),
         ('no_show', 'No Show'),
         ('rescheduled', 'Rescheduled'),
-        ('confirmed','Confirmed'),
+        ('confirmed', 'Confirmed'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -32,9 +31,16 @@ class Appointment(models.Model):
 
     # Staff handling this appointment (optional)
     handled_by = models.ForeignKey(
-        StaffProfile, null=True, blank=True, on_delete=models.SET_NULL,
+        'departments.StaffProfile',  # string reference to avoid circular import
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
         help_text="Staff member responsible for this appointment"
     )
+
+    class Meta:
+        # Removed UniqueConstraint to avoid duplicate error messages
+        ordering = ['app_date']
 
     @property
     def total_amount(self):
@@ -43,8 +49,13 @@ class Appointment(models.Model):
             return int(self.doctor.booking_amount)
         return int(self.advance_fee)
 
+    def clean(self):
+        """Prevent double booking of same doctor at same time."""
+        if Appointment.objects.filter(doctor=self.doctor, app_date=self.app_date).exclude(id=self.id).exists():
+            raise ValidationError("This doctor already has an appointment at this time.")
+
     def save(self, *args, **kwargs):
-        self.full_clean()  # Validates before saving
+        self.full_clean()  # Runs validation (including clean())
         super().save(*args, **kwargs)
 
     def __str__(self):
